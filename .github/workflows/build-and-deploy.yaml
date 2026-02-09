@@ -22,7 +22,7 @@ jobs:
         working-directory: services/backend
 
       - name: Build Spring Boot Image with Buildpack
-        run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app
+        run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app:latest
         working-directory: services/backend
 
       - name: Log in to GitHub Container Registry
