@@ -22,8 +22,7 @@ jobs:
         working-directory: services/backend
 
       - name: Build Spring Boot Image with Buildpack
-        run: ./mvnw spring-boot:build-image \
-             -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app
+        run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app
         working-directory: services/backend
 
       - name: Log in to GitHub Container Registry
@@ -44,9 +43,7 @@ jobs:
           | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack
 
       - name: Build React Image with Buildpack
-        run: pack build ghcr.io/sejongCapstone/react-app:latest \
-             --builder paketobuildpacks/builder:base \
-             --env NODE_VERSION=22
+        run: pack build ghcr.io/sejongCapstone/react-app:latest --builder paketobuildpacks/builder:base --env NODE_VERSION=22
         working-directory: services/frontend
 
       - name: Log in to GitHub Container Registry
