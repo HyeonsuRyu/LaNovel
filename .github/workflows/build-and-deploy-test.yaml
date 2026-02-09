@@ -40,7 +40,8 @@ jobs:
           | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack
 
       - name: Build React Image with Buildpack
-        run: pack build ghcr.io/sejongCapstone/react-app \
+        run: |
+          pack build ghcr.io/sejongCapstone/react-app \
              --builder paketobuildpacks/builder:base \
              --env NODE_VERSION=22
         working-directory: CICD-test/frontend
