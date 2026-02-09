@@ -22,8 +22,7 @@ jobs:
         working-directory: CICD-test/backend
 
       - name: Build Spring Boot Image with Buildpack
-        run: ./mvnw spring-boot:build-image \
-             -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app
+        run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app:latest
         working-directory: CICD-test/backend
 
       - name: Log in to GitHub Container Registry
@@ -45,9 +44,7 @@ jobs:
 
       - name: Build React Image with Buildpack
         run: |
-          pack build ghcr.io/sejongCapstone/react-app:latest \
-             --builder paketobuildpacks/builder:base \
-             --env NODE_VERSION=22
+          pack build ghcr.io/sejongCapstone/react-app:latest --builder paketobuildpacks/builder:base --env NODE_VERSION=22
         working-directory: CICD-test/frontend
 
       - name: Log in to GitHub Container Registry
