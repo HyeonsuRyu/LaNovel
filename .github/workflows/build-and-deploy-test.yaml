@@ -1,0 +1,52 @@
+name: Build and Push Spring & React Images
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  spring-boot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5.2.0
+        with:
+          java-version: '21'
+          distribution: 'microsoft'
+
+      - name: Build Spring Boot Image with Buildpack
+        run: ./mvnw spring-boot:build-image \
+             -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app
+        working-directory: CICD-test/backend
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push Spring Boot Image
+        run: docker push ghcr.io/sejongCapstone/spring-app:latest
+
+  react:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.2
+
+      - name: Install Pack CLI
+        run: |
+          curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.40.0/pack-v0.40.0-linux.tgz" \
+          | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack
+
+      - name: Build React Image with Buildpack
+        run: pack build ghcr.io/sejongCapstone/react-app \
+             --builder paketobuildpacks/builder:base \
+             --env NODE_VERSION=22
+        working-directory: CICD-test/frontend
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push React Image
+        run: docker push ghcr.io/sejongCapstone/react-app:latest
