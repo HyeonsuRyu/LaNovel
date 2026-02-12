@@ -54,7 +54,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<builder>paketobuildpacks/builder-jammy-base</builder>
+						<builder>paketobuildpacks/builder-jammy-full</builder>
 					</image>
 				</configuration>
 			</plugin>
