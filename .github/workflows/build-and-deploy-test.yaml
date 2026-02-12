@@ -2,7 +2,7 @@ name: Build and Push Spring & React Images
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "CICD-initial" ]
 
 permissions:
   contents: read
