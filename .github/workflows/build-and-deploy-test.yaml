@@ -38,6 +38,8 @@ jobs:
       - name: Build Spring Boot Image with Buildpack
         run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/hyeonsuryu/spring-app:latest
         working-directory: CICD-test/backend
+        env:
+          DOCKER_API_VERSION: 1.53
 
       - name: Push Spring Boot Image
         run: docker push ghcr.io/hyeonsuryu/spring-app:latest
