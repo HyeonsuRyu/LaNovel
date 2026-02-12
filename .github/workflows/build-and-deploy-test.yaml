@@ -35,6 +35,9 @@ jobs:
           curl -fsSL https://get.docker.com | sh
           docker --version
 
+      - name: Clean Docker system
+        run: docker system prune -af
+
       - name: Build Spring Boot Image with Buildpack
         run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/hyeonsuryu/spring-app:latest
         working-directory: CICD-test/backend
