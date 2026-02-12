@@ -51,7 +51,7 @@ jobs:
 
       - name: Build React Image with Buildpack
         run: |
-          pack build ghcr.io/hyeonsuryu/react-app:latest --builder paketobuildpacks/builder:base --env NODE_VERSION=22
+          pack build ghcr.io/hyeonsuryu/react-app:latest --builder paketobuildpacks/builder-jammy-base --env NODE_VERSION=22
         working-directory: CICD-test/frontend
 
       - name: Push React Image
