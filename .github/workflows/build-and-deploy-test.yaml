@@ -25,11 +25,11 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Spring Boot Image with Buildpack
-        run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/sejongCapstone/spring-app:latest
+        run: ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/sejong-capstone/spring-app:latest
         working-directory: CICD-test/backend
 
       - name: Push Spring Boot Image
-        run: docker push ghcr.io/sejongCapstone/spring-app:latest
+        run: docker push ghcr.io/sejong-capstone/spring-app:latest
 
   react:
     runs-on: ubuntu-latest
@@ -47,8 +47,8 @@ jobs:
 
       - name: Build React Image with Buildpack
         run: |
-          pack build ghcr.io/sejongCapstone/react-app:latest --builder paketobuildpacks/builder:base --env NODE_VERSION=22
+          pack build ghcr.io/sejong-capstone/react-app:latest --builder paketobuildpacks/builder:base --env NODE_VERSION=22
         working-directory: CICD-test/frontend
 
       - name: Push React Image
-        run: docker push ghcr.io/sejongCapstone/react-app:latest
+        run: docker push ghcr.io/sejong-capstone/react-app:latest
