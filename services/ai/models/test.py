@@ -16,3 +16,4 @@ with open("services/ai/models/bgm_gen/model.pkl", "rb") as f:
 print(type(bgm_model))
 output_file = bgm_model.generate("Calm, lofi beats, soft piano, relaxing atmosphere")
 print("생성된 파일:", output_file)
+
