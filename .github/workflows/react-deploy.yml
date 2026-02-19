@@ -25,6 +25,9 @@ jobs:
         run: npm run build
         working-directory: ./services/react_sample
 
+      - run: ls -ls ./services/react_sample/
+      - run: ls -ls ./services/react_sample/dist/
+
       - name: Upload dist to Server via SSH
         uses: appleboy/scp-action@v1
         with:
