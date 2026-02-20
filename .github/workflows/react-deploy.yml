@@ -25,9 +25,8 @@ jobs:
         run: npm run build
         working-directory: ./services/react_sample
 
-      - run: ls -la ./services/react_sample/
-      - run: ls -la ./services/react_sample/dist/
-      - run: pwd
+      - name: Change Directory
+        run: cd ./services/react_sample/dist
 
       - name: Upload dist to Server via SSH
         uses: appleboy/scp-action@v1
@@ -36,5 +35,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "/home/runner/work/LaNovel/LaNovel/services/react_sample/dist/*"
+          source: "*"
           target: "/var/www/html/lanovel"
