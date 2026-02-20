@@ -36,5 +36,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "services/react_sample/dist/*"
+          source: "/home/runner/work/LaNovel/LaNovel/services/react_sample/dist/*"
           target: "/var/www/html/lanovel"
