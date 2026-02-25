@@ -1,0 +1,1 @@
+INSERT INTO users (userId, password) VALUES('asdf','0000')
