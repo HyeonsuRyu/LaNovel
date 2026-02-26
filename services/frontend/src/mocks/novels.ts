@@ -12,7 +12,7 @@ const pickAuthor = (index: number): User => MOCK_AUTHORS[index % MOCK_AUTHORS.le
 const buildComments = (novelId: string, index: number): Comment[] => [
   {
     id: `c-${novelId}-1`,
-    content: '분위기 미쳤다... 바로 몰입됨',
+    content: '안녕하세요 준성씨',
     author: pickAuthor(index + 1),
     createdAt: `2026-02-${String(10 + index).padStart(2, '0')}T10:15:00Z`,
   },
