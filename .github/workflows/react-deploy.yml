@@ -34,14 +34,10 @@ jobs:
           ls -la
           cd dist
           ls -la
+          cat index.html
 
       #- name: Change Directory
       #  run: cd ./services/react_sample/dist
-
-      - name: for debugging
-        run: |
-          ls -la
-          cat index.html
 
       - name: Upload dist to Server via SSH
         uses: appleboy/scp-action@v1.0.0
@@ -50,5 +46,5 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "./*"
+          source: "./services/react_sample/dist/*"
           target: "/srv/www/html/lanovel"
