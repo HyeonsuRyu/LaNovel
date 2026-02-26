@@ -2,7 +2,7 @@ name: React Build and Deploy
 
 on:
   push:
-    branches: ["CICD"]
+    branches: ["frontend"]
 
 jobs:
   build-and-deploy:
