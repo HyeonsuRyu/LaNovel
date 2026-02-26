@@ -25,6 +25,9 @@ jobs:
         run: npm run build
         working-directory: ./services/react_sample
 
+      - name: debug
+        run: ls -la
+
       - name: Change Directory
         run: cd ./services/react_sample/dist
 
