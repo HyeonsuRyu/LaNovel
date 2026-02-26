@@ -22,7 +22,7 @@ jobs:
         run: mkdir -p ./services/backend/dist
 
       - name: Build with Gradle
-        run: ./gradlew :services:backend:build
+        run: ./services/backend/gradlew :services:backend:build
     
       - name: debug
         run: ls -al ./services/backend/dist
