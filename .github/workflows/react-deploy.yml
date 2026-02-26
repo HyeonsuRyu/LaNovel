@@ -25,12 +25,6 @@ jobs:
         run: npm run build
         working-directory: ./services/react_sample
 
-      - name: debug
-        run: |
-          whoami
-          id
-          echo $USER
-
       - name: debug2
         run: ls -al ./services/react_sample/dist
 
@@ -43,3 +37,4 @@ jobs:
           port: ${{ secrets.SERVER_SSH_PORT }}
           source: "./services/react_sample/dist/*"
           target: "/srv/www/html/lanovel"
+          strip_components: 3
