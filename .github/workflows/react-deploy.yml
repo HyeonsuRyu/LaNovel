@@ -19,14 +19,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./services/react_sample
+        working-directory: ./services/frontend
 
       - name: Build the React app
         run: npm run build
-        working-directory: ./services/react_sample
+        working-directory: ./services/frontend
 
       - name: debug2
-        run: ls -al ./services/react_sample/dist
+        run: ls -al ./services/frontend/dist
 
       - name: Upload dist to Server via SSH
         uses: appleboy/scp-action@v1.0.0
@@ -35,6 +35,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "./services/react_sample/dist/*"
+          source: "./services/frontend/dist/*"
           target: "/srv/www/html/lanovel"
           strip_components: 3
