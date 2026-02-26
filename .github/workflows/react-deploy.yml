@@ -26,10 +26,17 @@ jobs:
         working-directory: ./services/react_sample
 
       - name: debug
-        run: ls -la
+        run: |
+          ls -la
+          cd ./services
+          ls -la
+          cd react_sample
+          ls -la
+          cd dist
+          ls -la
 
-      - name: Change Directory
-        run: cd ./services/react_sample/dist
+      #- name: Change Directory
+      #  run: cd ./services/react_sample/dist
 
       - name: for debugging
         run: |
