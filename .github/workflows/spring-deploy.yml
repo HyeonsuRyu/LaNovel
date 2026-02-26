@@ -26,6 +26,7 @@ jobs:
 
       - name: Build with Gradle
         run: ./services/backend/gradlew :services:backend:build
+        working-directory: ./services/backend
     
       - name: debug
         run: ls -al ./services/backend/dist
