@@ -28,6 +28,11 @@ jobs:
       - name: Change Directory
         run: cd ./services/react_sample/dist
 
+      - name: for debugging
+        run: |
+          ls -la
+          cat index.html
+
       - name: Upload dist to Server via SSH
         uses: appleboy/scp-action@v1.0.0
         with:
