@@ -21,13 +21,13 @@ export interface SignupRequest {
 export const authApi = {
   // 회원가입
   signup: async (data: SignupRequest): Promise<AuthResponse> => {
-    const response = await axiosInstance.post<AuthResponse>('/auth/signup', data);
+    const response = await axiosInstance.post<AuthResponse>('/signup', data);
     return response.data;
   },
 
   // 로그인
   login: async (data: LoginRequest): Promise<AuthResponse> => {
-    const response = await axiosInstance.post<AuthResponse>('/auth/login', data);
+    const response = await axiosInstance.post<AuthResponse>('/login', data);
     return response.data;
   },
 
