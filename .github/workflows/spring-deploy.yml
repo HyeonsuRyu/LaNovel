@@ -43,4 +43,4 @@ jobs:
         with:
           context: ./services/backend
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]'):latest
+          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
