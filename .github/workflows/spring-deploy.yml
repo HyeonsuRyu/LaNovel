@@ -42,4 +42,4 @@ jobs:
         with:
           context: ./services/backend
           push: true
-          tags: ghcr.io/${{ secrets.GITHUB_REPOSITORY_OWNER }}/${{ secrets.DOCKER_HUB_IMAGE_NAME }}:latest
+          tags: ghcr.io/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_IMAGE_NAME }}:latest
