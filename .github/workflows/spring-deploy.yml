@@ -25,7 +25,7 @@ jobs:
         run: chmod +x ./services/backend/gradlew
 
       - name: Build with Gradle
-        run: ./services/backend/gradlew :services:backend:build
+        run: ./gradlew :build
         working-directory: ./services/backend
     
       - name: debug
