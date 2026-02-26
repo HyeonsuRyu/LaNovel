@@ -21,6 +21,9 @@ jobs:
       - name: make build directory
         run: mkdir -p ./services/backend/dist
 
+      - name: Grant execute permission to Gradle wrapper
+        run: chmod +x ./services/backend/gradlew
+
       - name: Build with Gradle
         run: ./services/backend/gradlew :services:backend:build
     
