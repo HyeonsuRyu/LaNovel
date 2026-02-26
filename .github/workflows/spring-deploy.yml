@@ -4,7 +4,6 @@ on:
   push:
     branches: ['spring-deploy-actions']
 
-
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -38,9 +37,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set Lowercase Owner, Repository Name
+        run: |
+          echo "REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+          echo "REPOSITORY_NAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+          echo "TAG=latest" >> $GITHUB_ENV
+
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.19.2
         with:
           context: ./services/backend
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+          tags: ghcr.io/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
