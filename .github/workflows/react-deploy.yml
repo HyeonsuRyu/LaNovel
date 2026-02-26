@@ -27,7 +27,7 @@ jobs:
 
       - name: debug
         run: |
-          whoamid
+          whoami
           id
           echo $USER
 
