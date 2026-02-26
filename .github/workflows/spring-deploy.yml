@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6    
+
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
@@ -26,6 +27,11 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew :build
         working-directory: ./services/backend
+
+      - name: Copy JAR to dist
+        run: |
+          mkdir -p services/backend/dist
+          cp services/backend/build/libs/*.jar services/backend/dist/
     
       - name: debug
         run: ls -al ./services/backend/dist
