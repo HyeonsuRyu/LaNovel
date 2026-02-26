@@ -27,14 +27,9 @@ jobs:
 
       - name: debug
         run: |
-          ls -la
-          cd ./services
-          ls -la
-          cd react_sample
-          ls -la
-          cd dist
-          ls -la
-          cat index.html
+          whoamid
+          id
+          echo $USER
 
       - name: debug2
         run: ls -al ./services/react_sample/dist
