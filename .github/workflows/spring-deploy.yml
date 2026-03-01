@@ -30,8 +30,8 @@ jobs:
 
       - name: Copy JAR to dist
         run: |
-          mkdir -p services/backend/dist
-          cp services/backend/build/libs/*.jar services/backend/dist/
+          mkdir -p ./services/backend/dist
+          cp ./services/backend/build/libs/*-SNAPSHOT.jar ./services/backend/dist/app.jar
     
       - name: debug
         run: ls -al ./services/backend/dist
