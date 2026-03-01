@@ -45,7 +45,6 @@ jobs:
 
       - name: Set Lowercase Owner, Repository Name
         run: |
-          echo "REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
           echo "REPOSITORY_NAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
           echo "TAG=latest" >> $GITHUB_ENV
 
@@ -54,7 +53,7 @@ jobs:
         with:
           context: ./services/backend
           push: true
-          tags: ghcr.io/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
+          tags: ghcr.io/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
 
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@v1.2.5
