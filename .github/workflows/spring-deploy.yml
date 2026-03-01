@@ -54,6 +54,7 @@ jobs:
           context: ./services/backend
           push: true
           tags: ghcr.io/${{ env.REPOSITORY_NAME }}:${{ env.TAG }}
+          file: ./services/backend/Dockerfile
 
       - name: Deploy to Server via SSH
         uses: appleboy/ssh-action@v1.2.5
